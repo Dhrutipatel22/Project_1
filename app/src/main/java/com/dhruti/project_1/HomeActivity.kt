@@ -1,9 +1,8 @@
 package com.dhruti.project_1
 
-
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
 
@@ -11,9 +10,24 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val prefs = getSharedPreferences("questify_prefs", MODE_PRIVATE)
-        val name = prefs.getString("user_name", "there")
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, HomeFragment())
+            .commit()
 
-        findViewById<TextView>(R.id.txtWelcome).text = "Welcome, $name! \uD83C\uDF89"
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
+        bottomNav.setOnItemSelectedListener { item ->
+            val fragment = when (item.itemId) {
+                R.id.nav_home -> HomeFragment()
+                R.id.nav_quests -> QuestsFragment()
+                R.id.nav_analytics -> AnalyticsFragment()
+                R.id.nav_rewards -> PlaceholderFragment("Rewards")
+                R.id.nav_profile -> PlaceholderFragment("Profile")
+                else -> HomeFragment()
+            }
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .commit()
+            true
+        }
     }
 }
