@@ -12,8 +12,16 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        val prefs = getSharedPreferences("questify_prefs", MODE_PRIVATE)
+        val onboardingComplete = prefs.getBoolean("onboarding_complete", false)
+
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, OnboardingActivity::class.java))
+            val destination = if (onboardingComplete) {
+                HomeActivity::class.java
+            } else {
+                OnboardingActivity::class.java
+            }
+            startActivity(Intent(this, destination))
             finish()
         }, 1500)
     }
