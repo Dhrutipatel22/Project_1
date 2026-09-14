@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import android.content.Intent
 
 class QuestsFragment : Fragment(R.layout.fragment_quests) {
 
@@ -55,8 +56,18 @@ class QuestsFragment : Fragment(R.layout.fragment_quests) {
             recyclerView.visibility = View.VISIBLE
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = QuestAdapter(filtered) { quest ->
-                QuestStorage.completeQuest(requireContext(), quest.id)
-                Toast.makeText(requireContext(), "+${quest.xpReward} XP!", Toast.LENGTH_SHORT).show()
+                val result = QuestStorage.completeQuest(requireContext(), quest.id)
+                if (result != null) {
+                    val unlockedBadges = BadgeStorage.checkAndUnlock(requireContext())
+                    val intent = Intent(requireContext(), QuestCompletedActivity::class.java)
+                    intent.putExtra("xpEarned", result.xpEarned)
+                    intent.putExtra("leveledUp", result.leveledUp)
+                    intent.putExtra("newLevel", result.newLevel)
+                    intent.putExtra("xpInLevel", result.xpInLevel)
+                    intent.putExtra("xpNeeded", result.xpNeeded)
+                    intent.putExtra("unlockedBadgeName", unlockedBadges.firstOrNull()?.name)
+                    startActivity(intent)
+                }
                 refresh(view)
             }
         }

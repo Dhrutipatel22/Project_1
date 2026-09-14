@@ -56,15 +56,23 @@ object QuestStorage {
     }
 
     /** Marks the quest complete, awards XP, updates level + streak. Returns new total XP. */
-    fun completeQuest(context: Context, questId: Long) {
+    data class QuestCompletionResult(
+        val xpEarned: Int,
+        val leveledUp: Boolean,
+        val newLevel: Int,
+        val xpInLevel: Int,
+        val xpNeeded: Int
+    )
+    fun completeQuest(context: Context, questId: Long): QuestCompletionResult? {
         val quests = getQuests(context)
-        val quest = quests.find { it.id == questId } ?: return
-        if (quest.isCompleted) return
+        val quest = quests.find { it.id == questId } ?: return null
+        if (quest.isCompleted) return null
         quest.isCompleted = true
         saveQuests(context, quests)
 
         val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
         val currentXp = prefs.getInt("total_xp", 0)
+        val oldLevel = prefs.getInt("level", 1)
         val newXp = currentXp + quest.xpReward
 
         var level = 1
@@ -90,6 +98,16 @@ object QuestStorage {
             .putInt("streak", newStreak)
             .putInt("last_active_day", today)
             .apply()
+
+        BadgeStorage.checkAndUnlock(context)
+
+        return QuestCompletionResult(
+            xpEarned = quest.xpReward,
+            leveledUp = level > oldLevel,
+            newLevel = level,
+            xpInLevel = remaining,
+            xpNeeded = xpForLevel(level)
+        )
     }
 
     fun xpForLevel(level: Int): Int = 200 + (level - 1) * 150

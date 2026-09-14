@@ -20,8 +20,8 @@ class HomeActivity : AppCompatActivity() {
                 R.id.nav_home -> HomeFragment()
                 R.id.nav_quests -> QuestsFragment()
                 R.id.nav_analytics -> AnalyticsFragment()
-                R.id.nav_rewards -> PlaceholderFragment("Rewards")
-                R.id.nav_profile -> PlaceholderFragment("Profile")
+                R.id.nav_rewards -> RewardsFragment()
+                R.id.nav_profile -> ProfileFragment()
                 else -> HomeFragment()
             }
             supportFragmentManager.beginTransaction()

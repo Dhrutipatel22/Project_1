@@ -47,6 +47,10 @@
             android:name=".AddQuestActivity"
             android:exported="false"
             android:theme="@style/Theme.Project_1" />
+        <activity
+            android:name=".QuestCompletedActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Project_1" />
     </application>
 
 </manifest>

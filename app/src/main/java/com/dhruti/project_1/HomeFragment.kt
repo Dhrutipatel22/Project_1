@@ -55,8 +55,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             recyclerView.visibility = View.VISIBLE
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = QuestAdapter(quests) { quest ->
-                QuestStorage.completeQuest(requireContext(), quest.id)
-                Toast.makeText(requireContext(), "+${quest.xpReward} XP!", Toast.LENGTH_SHORT).show()
+                val result = QuestStorage.completeQuest(requireContext(), quest.id)
+                if (result != null) {
+                    val unlockedBadges = BadgeStorage.checkAndUnlock(requireContext())
+                    val intent = Intent(requireContext(), QuestCompletedActivity::class.java)
+                    intent.putExtra("xpEarned", result.xpEarned)
+                    intent.putExtra("leveledUp", result.leveledUp)
+                    intent.putExtra("newLevel", result.newLevel)
+                    intent.putExtra("xpInLevel", result.xpInLevel)
+                    intent.putExtra("xpNeeded", result.xpNeeded)
+                    intent.putExtra("unlockedBadgeName", unlockedBadges.firstOrNull()?.name)
+                    startActivity(intent)
+                }
                 refreshData(view)
             }
         }
