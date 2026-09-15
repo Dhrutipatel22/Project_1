@@ -18,10 +18,10 @@ class UserSetupActivity : AppCompatActivity() {
         val btnStart = findViewById<Button>(R.id.btnStart)
 
         btnStart.setOnClickListener {
-            val name = editName.text.toString().ifBlank { "Alex Kumar" }
-            val email = editEmail.text.toString().ifBlank { "alex@example.com" }
+            val name = editName.text.toString().ifBlank { "xyz" }
+            val email = editEmail.text.toString().ifBlank { "abc@example.com" }
 
-            // Save to SharedPreferences so other screens can read it later
+
             val prefs = getSharedPreferences("questify_prefs", MODE_PRIVATE)
             prefs.edit()
                 .putString("user_name", name)

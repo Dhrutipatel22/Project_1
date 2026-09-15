@@ -13,7 +13,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         val prefs = getSharedPreferences("questify_prefs", MODE_PRIVATE)
-        val onboardingComplete = prefs.getBoolean("onboarding_complete", false)
+        val onboardingComplete = false
 
         Handler(Looper.getMainLooper()).postDelayed({
             val destination = if (onboardingComplete) {

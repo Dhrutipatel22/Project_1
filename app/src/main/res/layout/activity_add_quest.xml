@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:padding="20dp">
 
-        <!-- Page Title -->
         <TextView
             android:id="@+id/txtCreateQuest"
             android:layout_width="wrap_content"
@@ -24,7 +23,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Quest Title Label -->
         <TextView
             android:id="@+id/txtTitleLabel"
             android:layout_width="wrap_content"
@@ -36,7 +34,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtCreateQuest" />
 
-        <!-- Quest Title -->
         <EditText
             android:id="@+id/editTitle"
             android:layout_width="0dp"
@@ -50,7 +47,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtTitleLabel" />
 
-        <!-- Description Label -->
         <TextView
             android:id="@+id/txtDescriptionLabel"
             android:layout_width="wrap_content"
@@ -62,7 +58,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/editTitle" />
 
-        <!-- Description -->
         <EditText
             android:id="@+id/editDescription"
             android:layout_width="0dp"
@@ -77,7 +72,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtDescriptionLabel" />
 
-        <!-- Category Label -->
         <TextView
             android:id="@+id/txtCategoryLabel"
             android:layout_width="wrap_content"
@@ -89,7 +83,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/editDescription" />
 
-        <!-- Category Spinner -->
         <Spinner
             android:id="@+id/spinnerCategory"
             android:layout_width="0dp"
@@ -113,7 +106,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/spinnerCategory" />
 
-        <!-- Priority Spinner -->
         <Spinner
             android:id="@+id/spinnerPriority"
             android:layout_width="0dp"
@@ -125,7 +117,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtPriorityLabel" />
 
-        <!-- XP Label -->
         <TextView
             android:id="@+id/txtXpLabel"
             android:layout_width="wrap_content"
@@ -137,7 +128,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/spinnerPriority" />
 
-        <!-- XP Spinner -->
         <Spinner
             android:id="@+id/spinnerXp"
             android:layout_width="0dp"
@@ -149,7 +139,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtXpLabel" />
 
-        <!-- Cancel Button -->
         <Button
             android:id="@+id/btnCancel"
             android:layout_width="0dp"
@@ -161,7 +150,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/spinnerXp" />
 
-        <!-- Create Button -->
         <Button
             android:id="@+id/btnCreate"
             android:layout_width="0dp"
@@ -174,7 +162,6 @@
             app:layout_constraintStart_toEndOf="@id/btnCancel"
             app:layout_constraintTop_toTopOf="@id/btnCancel" />
 
-        <!-- Bottom Space -->
         <View
             android:layout_width="0dp"
             android:layout_height="20dp"
