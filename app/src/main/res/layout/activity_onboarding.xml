@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="#F8FAFC">
 
-    <!-- ViewPager -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="0dp"
@@ -17,7 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Dots -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/dotsLayout"
         android:layout_width="wrap_content"
@@ -27,7 +25,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Next Button -->
     <Button
         android:id="@+id/btnNext"
         android:layout_width="0dp"
