@@ -13,10 +13,7 @@ An Android application that turns everyday tasks into **quests**. Completing a q
 - [Project Structure](#project-structure)
 - [Gamification Logic](#gamification-logic)
 - [Data Storage](#data-storage)
-- [Getting Started](#getting-started)
-- [Design System](#design-system)
-- [Known Limitations](#known-limitations)
-- [Future Enhancements](#future-enhancements)
+
 
 ---
 
@@ -297,68 +294,8 @@ implementation("androidx.viewpager2:viewpager2:1.1.0")
 implementation("androidx.fragment:fragment-ktx:...")
 ```
 
-### Resetting App Data
 
-Because onboarding is skipped after the first successful setup, use one of the following to see the onboarding flow again:
 
-- **Clear app data:** long-press the app icon → App Info → Storage & cache → Clear Storage
-- **Reinstall:** uninstall the app, then run it again from Android Studio
 
----
 
-## Design System
 
-### Color Palette
-
-| Name | Hex | Usage |
-|---|---|---|
-| Primary | `#7C3AED` | Buttons, XP cards, active states |
-| Primary Light | `#A788FA` | Secondary accents |
-| Card Stroke | `#EDE9FE` | Card borders, inactive chips |
-| Background | `#F8FAFC` | Screen background |
-| Text Primary | `#1E1B2E` | Headings and body text |
-| Text Secondary | `#6B7280` | Captions and supporting text |
-| Success | `#22C55E` | Completion states, XP gains |
-| Warning | `#F59E0B` | Streak indicators |
-| Error | `#EF4444` | Error states |
-| Info | `#3B82F6` | Informational accents |
-
-### Typography Scale
-
-| Style | Size | Weight |
-|---|---|---|
-| Heading 1 | 24sp | Bold |
-| Heading 2 | 20sp | SemiBold |
-| Heading 3 | 18sp | Medium |
-| Body 1 | 16sp | Regular |
-| Body 2 | 14sp | Regular |
-| Caption | 12sp | Regular |
-
----
-
-## Known Limitations
-
-- **Single user only.** The setup screen captures a name and email for display purposes but performs no authentication. All data lives in one shared preferences store, so multiple people using the same install would share the same quests, XP, and badges.
-- **No cloud sync or backup.** Uninstalling the app permanently deletes all progress.
-- **No due-date reminders.** Quests can be assigned a due date conceptually, but no notification or alarm system is wired up.
-- **No quest editing or deletion.** Quests can be created and completed but not modified or removed from the UI.
-- **Placeholder iconography.** Several icons use built-in Android system drawables rather than custom artwork.
-- **SharedPreferences at scale.** Storing all quests as a single JSON string is simple and dependency-free, but would not scale well to thousands of records; a Room database would be the appropriate upgrade.
-
----
-
-## Future Enhancements
-
-- Migrate persistence from SharedPreferences to **Room** for proper relational storage and query support
-- Add **Firebase Authentication** and **Firestore** to support real multi-user accounts with cloud sync
-- Implement **WorkManager**-backed notifications for due-date reminders
-- Add edit and delete actions for existing quests
-- Extend analytics with weekly and monthly trend charts
-- Add dark mode support
-- Replace placeholder icons with a custom illustration set
-
----
-
-## License
-
-This project was built as an educational exercise. Adapt and reuse freely.
