@@ -63,7 +63,8 @@ An Android application that turns everyday tasks into **quests**. Completing a q
 
 | <img width="100" height="240" alt="image" src="https://github.com/user-attachments/assets/196418f3-7dd9-419b-aa83-865e4940d42a" />
  |<img width="100" height="240" alt="image" src="https://github.com/user-attachments/assets/af0df87e-f644-40ec-b959-82203fc1fc6b" />
- |![Uploading image.png…]()
+ |<img width="100" height="240" alt="image" src="https://github.com/user-attachments/assets/eae8a2e0-b46c-4188-97c7-4211a01782cf" />
+
 
 
 ---
